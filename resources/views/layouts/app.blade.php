@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -19,6 +20,8 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    <script src="{{ asset('js/live.js') }}"></script>
+
 </head>
 <body>
     <div id="app">
