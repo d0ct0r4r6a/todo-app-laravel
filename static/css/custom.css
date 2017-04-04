@@ -71,7 +71,7 @@ h1.header-title {
 
 /* Panel Footer */
 
-.panel-footer {
+.panel-footer, .modal-footer {
   color: darkgrey;
 }
 
@@ -79,4 +79,48 @@ h1.header-title {
 
 .modal-content {
   background: #eee url('../img/body-bg.png')
+}
+
+/* Form input */
+
+input.task-input {
+  width: 100%;
+  border: none;
+  font-size: 18px;
+  height: 46px;
+  line-height: 1.3333;
+  color: #555;
+  display: block;
+  font-style: italic;
+}
+
+
+input.task-input:focus, 
+input.task-input:active {
+  outline: none;
+}
+
+/* TASK ITEMS */
+.task-item {
+  position: relative;
+}
+
+.done {
+  text-decoration:line-through;
+  color: #ddd;
+}
+
+table.table tbody tr td {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+table.table tbody tr td:hover .row-buttons {
+  display: block;
+}
+
+.row-buttons {
+  width: 40px;
+  display: none;
+  top: 15px;
 }
