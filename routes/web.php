@@ -13,6 +13,8 @@
 
 Auth::routes();
 
+Route::resource('todolists', 'TodoListsController');
+
 Route::get('/', 'HomeController@index');
 
 Route::get('/home', function(){
