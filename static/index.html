@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>AJAX To-Do App</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Web Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/custom.css">
+
+  <script src="js/live.js"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>Todo</strong>App</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="clearfix">
+            <div class="pull-left"><h1 class="header-title">Todo List</h1></div>
+            <div class="pull-right"><button class="btn btn-success" data-toggle="modal" data-target="#todolist-modal">Create New List</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+
+        <!--MODAL-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="todolist-modal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Create New List</h4>
+              </div>
+              <div class="modal-body">
+
+                <form>
+                  <div class="form-group">
+                    <label for="" class="control-label">List Name</label>
+                    <input type="text" class="form-control input-lg">
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="control-label">Description</label>
+                    <textarea class="form-control input-lg" name="" id="" rows="2"></textarea>
+                  </div>
+                </form>
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="panel panel-default">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <h4 class="list-group-item-heading">List group item heading <span class="badge">10 tasks</span></h4>
+              <p class="list-group-item-text">Lorem ipsum</p>
+              <div class="buttons">
+                <a href="#" class="btn btn-info btn-xs" title="Manage Tasks"><i class="glyphicon glyphicon-ok"></i></a>
+                <a href="#" class="btn btn-default btn-xs show-todolist-modal" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+                <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <h4 class="list-group-item-heading">List group item heading <span class="badge">10 tasks</span></h4>
+              <p class="list-group-item-text">Lorem ipsum</p>
+              <div class="buttons">
+                <a href="#" class="btn btn-info btn-xs" title="Manage Tasks"><i class="glyphicon glyphicon-ok"></i></a>
+                <a href="#" class="btn btn-default btn-xs show-todolist-modal" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+                <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <h4 class="list-group-item-heading">List group item heading <span class="badge">10 tasks</span></h4>
+              <p class="list-group-item-text">Lorem ipsum</p>
+              <div class="buttons">
+                <a href="#" class="btn btn-info btn-xs" title="Manage Tasks"><i class="glyphicon glyphicon-ok"></i></a>
+                <a href="#" class="btn btn-default btn-xs show-todolist-modal" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
+                <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
+              </div>
+            </li>
+          </ul>
+
+          <div class="panel-footer">
+            <small>3 list items</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+  
+</body>
+</html>
