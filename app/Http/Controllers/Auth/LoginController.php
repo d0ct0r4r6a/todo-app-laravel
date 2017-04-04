@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -35,5 +35,18 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    /**
+     * Determine which field of the User model is used for authentication
+     * by returning a string specifying the field.
+     * If this method doesn't exist, the 'email' field is used.
+     * 
+     *
+     * @return string 
+     */
+    public function username()
+    {
+        return 'email';
     }
 }
