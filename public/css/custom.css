@@ -1,0 +1,126 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 40px;
+  background: #f1f1f1 url('../img/body-bg.png');
+}
+
+header {
+  background: #3e4249 url('../img/header-bg.png');
+  color: #eee;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #080808;
+}
+
+/* NAVBAR */
+
+.navbar .navbar-brand {
+  font-size: 20px;
+  color: #eee;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+.navbar .navbar-brand strong {
+  font-weight: bold;
+  letter-spacing: -2px;
+  padding-right: 3px;
+  color: #fff;
+}
+
+/* HEADER */
+
+h1.header-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: -2px;
+}
+
+.pull-right .btn {
+  margin: 20px 0 10px;
+}
+
+.pull-left .header-title {
+  margin-top: 10px;
+}
+
+/* List group */
+.list-group-item:hover {
+  background: lightgrey;
+}
+
+.list-group-item:hover .buttons{
+  display: block;
+}
+.list-group-item-heading {
+  font-size: 150%;
+}
+
+.list-group-item-text {
+  color: #999;
+}
+
+.buttons {
+  position: absolute;
+  width: 80px;
+  top: 10px;
+  right: 10px;
+  text-align: center;
+  display: none;
+}
+
+/* Panel Footer */
+
+.panel-footer, .modal-footer {
+  color: darkgrey;
+}
+
+/* Modal */
+
+.modal-content {
+  background: #eee url('../img/body-bg.png')
+}
+
+/* Form input */
+
+input.task-input {
+  width: 100%;
+  border: none;
+  font-size: 18px;
+  height: 46px;
+  line-height: 1.3333;
+  color: #555;
+  display: block;
+  font-style: italic;
+}
+
+
+input.task-input:focus, 
+input.task-input:active {
+  outline: none;
+}
+
+/* TASK ITEMS */
+.task-item {
+  position: relative;
+}
+
+.done {
+  text-decoration:line-through;
+  color: #ddd;
+}
+
+table.table tbody tr td {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+table.table tbody tr td:hover .row-buttons {
+  display: block;
+}
+
+.row-buttons {
+  width: 40px;
+  display: none;
+  top: 15px;
+}
