@@ -11,7 +11,7 @@
           <div class="clearfix">
             <div class="pull-left"><h1 class="header-title">Todo List</h1></div>
             <div class="pull-right">
-              <a href="{{ route('todolists.create') }}" class="btn btn-success show-todolist-modal">Create New List</a>
+              <a href="{{ route('todolists.create') }}" class="btn btn-success show-todolist-modal" title="Create New List">Create New List</a>
             </div>
           </div>
         </div>

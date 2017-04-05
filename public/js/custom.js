@@ -1,15 +1,20 @@
+// TO DO LIST MODAL 
 $('.show-todolist-modal').click(function(event) {
   event.preventDefault();
 
-  var url = $(this).attr('href');
+  var me = $(this),
+     url = me.attr('href'),
+     title = me.attr('title');
   
+  $('#todo-list-title').text(title);
+  $('#todo-list-save-btn').text(me.hasClass('edit') ? 'Update' : 'Create');
+
   $.ajax({
     url: url,
     dataType: 'html',
     success: function(response){
       $('#todo-list-body').html(response);
     }
-
   });
 
   $('#todolist-modal').modal('show');
@@ -26,7 +31,8 @@ function updateTodoListCounter() {
   $('#todo-list-counter').text(total).next().text(total > 1 ? 'lists' : 'list');
 }
 
-$('#todo-list-modal').on('keypress', ':input:not(textarea)', function (event){
+//TODO: Prevent Enter key to submit in new todolist form
+$('#todo-list-modal').on('keypress', 'input:not(textarea)', function (event){
   return event.keyCode != 13;
 });
 
@@ -37,7 +43,9 @@ $('#todo-list-save-btn').click(function(event){
   event.preventDefault();
   var form = $('#todo-list-body form'),
       url = form.attr("action"),
-      method = "POST";
+      // This is needed because form in collectivelaravel
+      // put hidden input named '_method' to simulate 'PUT' request
+      method = $('input[name=_method]').val() == undefined ? "POST" : 'PUT';
   
   form.find('.help-block').remove();
   form.find('.form-group').removeClass('has-error');
@@ -47,14 +55,25 @@ $('#todo-list-save-btn').click(function(event){
     method: method,
     data: form.serialize(), //TO-UNDERSTAND
     success: function(response){
-      $('#todo-list').prepend(response); //BUG: IF NO #todo-list ? i.e. no lists have been created
+      if (method === 'POST'){
+        $('#todo-list').prepend(response); //BUG: IF NO #todo-list ? i.e. no lists have been created
 
-      showMessage("To-do list has been created.");
+        showMessage("To-do list has been created.");
 
-      form.trigger('reset');
-      $('#title').focus();
+        form.trigger('reset');
+        $('#title').focus();
 
-      updateTodoListCounter();
+        updateTodoListCounter();
+      }
+      else {
+        //this is the hidden input too
+        var id = $('input[name=id]').val();
+        console.log(id);
+        if (id) {
+          $('#todo-list-' + id).replaceWith(response);
+        }
+      }
+      $('#todolist-modal').modal('hide');
 
     },
     error: function (xhr) {
