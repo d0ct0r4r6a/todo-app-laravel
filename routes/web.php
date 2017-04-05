@@ -16,5 +16,7 @@ Auth::routes();
 Route::get('/', function(){
   return view('auth.login');
 });
-
+Route::get('/logout' , function() {
+  return redirect('/');
+});
 Route::resource('todolists', 'TodoListsController');

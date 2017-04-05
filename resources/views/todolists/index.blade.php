@@ -37,6 +37,9 @@
         <!-- TASK MODAL-->
         @include('todolists.taskmodal')
 
+        <!-- CONFIRM MODAL-->
+        @include('todolists.confirmmodal')
+
         {{-- TODO LISTS --}}
         <div class="panel panel-default {{ ! $count ? 'hidden' : '' }}">
           <ul class="list-group" id="todo-list"> {{-- id for jQuery AJAX to add new to-do list item --}}

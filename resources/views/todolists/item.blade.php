@@ -6,7 +6,7 @@
       <i class="glyphicon glyphicon-ok"></i></a>
     <a href="{{ route('todolists.edit', $todoList->id) }}" class="btn btn-default btn-xs show-todolist-modal edit" title="Edit {{ $todoList->title }}">
       <i class="glyphicon glyphicon-edit"></i></a>
-    <a href="#" class="btn btn-danger btn-xs" title="Delete">
+    <a href="{{ route('todolists.destroy', $todoList->id) }}" class="btn btn-danger btn-xs show-confirm-modal" data-title="{{ $todoList->title }}" title="Delete">
       <i class="glyphicon glyphicon-remove"></i></a>
   </div>
 </li>

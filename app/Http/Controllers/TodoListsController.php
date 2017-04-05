@@ -104,6 +104,9 @@ class TodoListsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $todoList = TodoList::findOrFail($id);
+        $todoList->delete();
+
+        return $todoList;
     }
 }

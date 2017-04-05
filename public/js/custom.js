@@ -30,10 +30,22 @@ function showMessage(message, element = "#add-new-alert") {
 function updateTodoListCounter() {
   var total = $('.list-group-item').length;
   $('#todo-list-counter').text(total).next().text(total > 1 ? 'lists' : 'list');
+
+  showNoRecordMessage(total);  
 }
 
-//TODO: Prevent Enter key to submit in new todolist form
-$('#todo-list-modal').on('keypress', 'input:not(textarea)', function (event){
+function showNoRecordMessage(total) {
+  if (total > 0) {
+    $('#todo-list').closest('.panel').removeClass('hidden');
+    $('#no-record-alert').addClass('hidden');
+  }
+  else {
+    $('#todo-list').closest('.panel').addClass('hidden');
+    $('#no-record-alert').removeClass('hidden');
+  }
+}
+
+$('#todolist-modal').on('keypress', 'input:not(textarea)', function (event){
   return event.keyCode != 13;
 });
 
@@ -90,6 +102,41 @@ $('#todo-list-save-btn').click(function(event){
       }
     }
   });
+});
+
+$('body').on('click', '.show-confirm-modal', function(event) {
+  event.preventDefault();
+
+  var me = $(this),
+      title = me.attr('data-title'),
+      action = me.attr('href');
+
+
+  $('#confirm-body form').attr('action', action);
+  $('#confirm-body p').html("Do you want to delete the list: <strong>" + title + "</strong>?" ); 
+  $('#confirm-modal').modal('show');
+});
+
+
+$('#confirm-remove-btn').click( function(e){
+  e.preventDefault();
+
+  var form = $('#confirm-body form'),
+      url = form.attr('action');
+
+  $.ajax({
+      url: url,
+      method: 'DELETE',
+      data: form.serialize(),
+      success: function(data) {
+        $('#confirm-modal').modal('hide');
+
+        $('#todo-list-' + data.id).fadeOut(function() {
+           $(this).remove();
+           updateTodoListCounter();
+        });
+      }
+     });
 });
 
 $('.show-task-modal').click(function(event) {
