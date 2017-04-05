@@ -13,7 +13,7 @@ class TodoListsController extends Controller
      */
     public function index()
     {
-        //
+        return view('todolists.index');
     }
 
     /**

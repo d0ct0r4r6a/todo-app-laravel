@@ -1,6 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  padding-top: 90px;
+  padding-top: 45px;
   background: #f1f1f1 url('../img/body-bg.png');
 }
 
@@ -38,10 +38,6 @@ h1.header-title {
 
 .pull-right .btn {
   margin: 20px 0 10px;
-}
-
-.pull-left .header-title {
-  margin-top: 10px;
 }
 
 /* List group */
@@ -98,6 +94,7 @@ input.task-input {
 input.task-input:focus, 
 input.task-input:active {
   outline: none;
+  font-style: normal;
 }
 
 /* TASK ITEMS */
