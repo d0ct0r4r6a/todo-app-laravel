@@ -22,6 +22,11 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
 
+        {{-- ALERT --}}
+        <div class="alert alert-warning {{ $count ? 'hidden' : '' }}" id="no-record-alert">
+          No record found.
+        </div>
+
         <!--MODAL-->
         <div class="modal fade" tabindex="-1" role="dialog" id="todolist-modal">
           <div class="modal-dialog" role="document">
@@ -124,39 +129,29 @@
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
-        <div class="panel panel-default">
-          <ul class="list-group">
+
+        {{-- TODO LISTS --}}
+        <div class="panel panel-default {{ ! $count ? 'hidden' : '' }}">
+          <ul class="list-group" id="todo-list"> {{-- id for AJAX to add new to-do list item --}}
+
+          @foreach($todoLists as $todoList)
+              
             <li class="list-group-item">
-              <h4 class="list-group-item-heading">List group item heading <span class="badge">10 tasks</span></h4>
-              <p class="list-group-item-text">Lorem ipsum</p>
+              <h4 class="list-group-item-heading">{{ $todoList->title }} <span class="badge">0 task</span></h4>
+              <p class="list-group-item-text">{{ $todoList->description }}</p>
               <div class="buttons">
                 <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#task-modal" title="Manage Tasks"><i class="glyphicon glyphicon-ok"></i></a>
                 <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target="#todolist-modal" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
                 <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
               </div>
             </li>
-            <li class="list-group-item">
-              <h4 class="list-group-item-heading">List group item heading <span class="badge">10 tasks</span></h4>
-              <p class="list-group-item-text">Lorem ipsum</p>
-              <div class="buttons">
-                <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#task-modal" title="Manage Tasks"><i class="glyphicon glyphicon-ok"></i></a>
-                <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target="#todolist-modal" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
-                <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
-              </div>
-            </li>
-            <li class="list-group-item">
-              <h4 class="list-group-item-heading">List group item heading <span class="badge">10 tasks</span></h4>
-              <p class="list-group-item-text">Lorem ipsum</p>
-              <div class="buttons">
-                <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#task-modal" title="Manage Tasks"><i class="glyphicon glyphicon-ok"></i></a>
-                <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target="#todolist-modal" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>
-                <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
-              </div>
-            </li>
+
+          @endforeach
+
           </ul>
 
           <div class="panel-footer">
-            <small>3 list items</small>
+            <small>{{ $count }} list item{{ $count > 1 ? 's' : ''}}</small>
           </div>
         </div>
       </div>

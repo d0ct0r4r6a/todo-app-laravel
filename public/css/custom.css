@@ -97,7 +97,7 @@ input.task-input:active {
   font-style: normal;
 }
 
-/* TASK ITEMS */
+/* Task Item */
 .task-item {
   position: relative;
 }
@@ -120,4 +120,8 @@ table.table tbody tr td:hover .row-buttons {
   width: 40px;
   display: none;
   top: 15px;
+}
+
+.hidden {
+  display: hidden;
 }
