@@ -48,7 +48,10 @@
           </ul>
 
           <div class="panel-footer">
-            <small><span id="todo-list-counter">{{ $count }}</span> list{{ $count > 1 ? 's' : ''}}</small>
+            <small>
+            <span id="todo-list-counter">{{ $count }}</span>
+            <span>list{{ $count > 1 ? 's' : ''}}</span>
+            </small>
           </div>
         </div>
       </div>
