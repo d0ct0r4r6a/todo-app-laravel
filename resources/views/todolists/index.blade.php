@@ -29,6 +29,8 @@
           No record found.
         </div>
 
+        <div class="alert alert-success" id="update-alert" style="display:none;"></div>
+
         <!-- CREATE/EDIT LIST MODAL-->
         @include('todolists.todolistmodal')
 

@@ -1,5 +1,6 @@
 // TO DO LIST MODAL 
-$('.show-todolist-modal').click(function(event) {
+
+$('body').on('click','.show-todolist-modal', function(event) {
   event.preventDefault();
 
   var me = $(this),
@@ -20,8 +21,8 @@ $('.show-todolist-modal').click(function(event) {
   $('#todolist-modal').modal('show');
 });
 
-function showMessage(message) {
-  $("#add-new-alert").text(message).fadeTo(1000,500).slideUp(500, function () {  
+function showMessage(message, element = "#add-new-alert") {
+  $(element).text(message).fadeTo(1000,500).slideUp(500, function () {  
     $(this).hide();
   });
 }
@@ -74,6 +75,7 @@ $('#todo-list-save-btn').click(function(event){
         }
       }
       $('#todolist-modal').modal('hide');
+      showMessage("Todo list has been updated.", "#update-alert")
 
     },
     error: function (xhr) {
