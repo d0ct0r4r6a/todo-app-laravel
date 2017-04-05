@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <div class="clearfix">
-            <div class="pull-left"><h1 class="header-title">Todo List</h1></div>
+            <div class="pull-left"><h1 class="header-title">Todo List Yo</h1></div>
             <div class="pull-right"><button class="btn btn-success" data-toggle="modal" data-target="#todolist-modal">Create New List</button></div>
           </div>
         </div>

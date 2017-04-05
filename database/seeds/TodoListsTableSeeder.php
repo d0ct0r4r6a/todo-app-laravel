@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+
 class TodoListsTableSeeder extends Seeder
 {
     /**
@@ -9,15 +10,16 @@ class TodoListsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run($quantity = null)
     {
+        var_dump($quantity);
         DB::table('todo_lists')->truncate();
         $faker = Faker::create();
         $todoLists = [];
-        for ($i = 0; $i < 10; $i++){
+        for ($i = 1; $i <= $quantity; $i++){
             $todoLists[] = [
-                'title' => "{$i} · {$faker->sentence($nbWords = 4, $variableNbWords = true)}",
-                'description' => $faker->text($maxNbChars = 200),
+                'title' => "{$faker->catchPhrase}",
+                'description' => $faker->realText($maxNbChars = 100),
                 'user_id' => rand(1,3)  
             ];
         }
