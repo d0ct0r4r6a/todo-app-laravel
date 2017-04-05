@@ -20,7 +20,9 @@ class TodoListsTableSeeder extends Seeder
             $todoLists[] = [
                 'title' => "{$faker->catchPhrase}",
                 'description' => $faker->realText($maxNbChars = 100),
-                'user_id' => rand(1,3)  
+                'user_id' => rand(1,3),
+                'created_at'=> new DateTime,
+                'updated_at'=> new DateTime
             ];
         }
 

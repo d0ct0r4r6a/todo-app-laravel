@@ -12,10 +12,14 @@ class TodoListsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $todoLists = TodoList::all();
-        return view('todolists.index', compact('todoLists'), ['count' => TodoList::count()]);
+        $todoLists = $request->user()
+                            ->todoLists()
+                            ->orderBy('updated_at', 'desc')
+                            ->get();
+        // $todoLists = TodoList::all();
+        return view('todolists.index', compact('todoLists'), ['count' => $todoLists->count()]);
     }
 
     /**
