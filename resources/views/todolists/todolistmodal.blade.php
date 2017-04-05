@@ -9,7 +9,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="todo-list-save-btn">Save changes</button>
+        <button type="submit" class="btn btn-primary" id="todo-list-save-btn">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

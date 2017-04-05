@@ -29,9 +29,9 @@ $('#todo-list-save-btn').click(function(event){
   $.ajax({
     url: url,
     method: method,
-    data: form.serialize(),
+    data: form.serialize(), //TO-UNDERSTAND
     success: function(response){
-      $('#todo-list-body').prepend(response);
+      $('#todo-list').prepend(response);
     },
     error: function (xhr) {
       var errors = xhr.responseJSON;

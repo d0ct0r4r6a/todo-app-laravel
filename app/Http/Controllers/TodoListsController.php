@@ -46,7 +46,8 @@ class TodoListsController extends Controller
             'description' => 'min:5'
         ]);
 
-        $todoList = TodoList::create($request->all());
+        //TO-UNDERSTAND: Relations between $request and user()
+        $todoList = $request->user()->todoLists()->create($request->all());
 
         return view('todolists.item', compact('todoList'));
     }
