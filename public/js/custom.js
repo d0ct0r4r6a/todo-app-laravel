@@ -1,4 +1,6 @@
-// TO DO LIST MODAL 
+/*=============== MODAL FORM =====================*/
+
+// NEW/EDIT LIST FORM HANDLER
 
 $('body').on('click','.show-todolist-modal', function(event) {
   event.preventDefault();
@@ -21,37 +23,11 @@ $('body').on('click','.show-todolist-modal', function(event) {
   $('#todolist-modal').modal('show');
 });
 
-function showMessage(message, element = "#add-new-alert") {
-  $(element).text(message).fadeTo(1000,500).slideUp(500, function () {  
-    $(this).hide();
-  });
-}
 
-function updateTodoListCounter() {
-  var total = $('.list-group-item').length;
-  $('#todo-list-counter').text(total).next().text(total > 1 ? 'lists' : 'list');
-
-  showNoRecordMessage(total);  
-}
-
-function showNoRecordMessage(total) {
-  if (total > 0) {
-    $('#todo-list').closest('.panel').removeClass('hidden');
-    $('#no-record-alert').addClass('hidden');
-  }
-  else {
-    $('#todo-list').closest('.panel').addClass('hidden');
-    $('#no-record-alert').removeClass('hidden');
-  }
-}
-
-$('#todolist-modal').on('keypress', 'input:not(textarea)', function (event){
-  return event.keyCode != 13;
-});
-
-
-// AJAX for handling list saving
-
+/*================= CREATE/UPDATE ==================*/
+/**
+ * CREATE/UPDATE BUTTON HANDLER
+ */
 $('#todo-list-save-btn').click(function(event){
   event.preventDefault();
   var form = $('#todo-list-body form'),
@@ -69,7 +45,7 @@ $('#todo-list-save-btn').click(function(event){
     data: form.serialize(), //TO-UNDERSTAND
     success: function(response){
       if (method === 'POST'){
-        $('#todo-list').prepend(response); //BUG: IF NO #todo-list ? i.e. no lists have been created
+        $('#todo-list').prepend(response);
 
         showMessage("To-do list has been created.");
 
@@ -81,7 +57,6 @@ $('#todo-list-save-btn').click(function(event){
       else {
         //this is the hidden input too
         var id = $('input[name=id]').val();
-        console.log(id);
         if (id) {
           $('#todo-list-' + id).replaceWith(response);
         }
@@ -104,6 +79,11 @@ $('#todo-list-save-btn').click(function(event){
   });
 });
 
+/*===================DELETE===================== */
+
+/**
+ * DELETE MODAL BUTTON HANDLER
+ */
 $('body').on('click', '.show-confirm-modal', function(event) {
   event.preventDefault();
 
@@ -117,12 +97,15 @@ $('body').on('click', '.show-confirm-modal', function(event) {
   $('#confirm-modal').modal('show');
 });
 
-
-$('#confirm-remove-btn').click( function(e){
+/**
+ * DELETE CONFIRMATION HANDLER
+ */
+$('body').on('click', '#confirm-remove-btn', function(e){
   e.preventDefault();
 
   var form = $('#confirm-body form'),
       url = form.attr('action');
+  
 
   $.ajax({
       url: url,
@@ -134,17 +117,85 @@ $('#confirm-remove-btn').click( function(e){
         $('#todo-list-' + data.id).fadeOut(function() {
            $(this).remove();
            updateTodoListCounter();
+           showMessage("Todo list has been deleted.", "#update-alert")
         });
       }
      });
 });
 
-$('.show-task-modal').click(function(event) {
-  event.preventDefault();
+/*================== TASKS ===================== */
 
+/**
+ * TASK MODAL BUTTON HANDLER
+ */
+$('body').on('click', '.show-task-modal', function(event) {
+  
+  event.preventDefault();
   $('#task-modal').modal('show');
+
 });
 
+
+
+
+
+
+
+
+
+
+/*================== HELPER ==================== */
+
+/**
+ * UPDATE LIST COUNTER AT THE FOOTER
+ */
+function updateTodoListCounter() {
+  var total = $('.list-group-item').length;
+  $('#todo-list-counter').text(total).next().text(total > 1 ? 'lists' : 'list');
+
+  showNoRecordMessage(total);  
+}
+
+/**
+ * SHOW/REMOVE ALERT MESSAGE
+ * 
+ * @param total 
+ */
+function showNoRecordMessage(total) {
+  if (total > 0) {
+    $('#todo-list').closest('.panel').removeClass('hidden');
+    $('#no-record-alert').addClass('hidden');
+  }
+  else {
+    $('#todo-list').closest('.panel').addClass('hidden');
+    $('#no-record-alert').removeClass('hidden');
+  }
+}
+
+/**
+ * DISPLAY ALERT
+ * 
+ * @param {string} message 
+ * @param {string} element 
+ */
+function showMessage(message, element = "#add-new-alert") {
+  $(element).text(message).fadeTo(1000,500).slideUp(500, function () {  
+    $(this).hide();
+  });
+}
+
+
+
+
+
+
+
+
+/*==================UTILITIES================== */
+
+/**
+ * iCHECK CHECKBOXES
+ */
 $(function() {
   $('input[type=checkbox]').iCheck({
     checkboxClass: 'icheckbox_square-green',
@@ -159,4 +210,11 @@ $(function() {
     $('.check-item').iCheck('uncheck');
   });
 
+});
+
+/**
+ * PREVENT ENTER KEY SUBMISSION
+ */
+$('#todolist-modal').on('keypress', 'input:not(textarea)', function (event){
+  return event.keyCode != 13;
 });

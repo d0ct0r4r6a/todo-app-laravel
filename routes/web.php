@@ -19,4 +19,5 @@ Route::get('/', function(){
 Route::get('/logout' , function() {
   return redirect('/');
 });
+
 Route::resource('todolists', 'TodoListsController');

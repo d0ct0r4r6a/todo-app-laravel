@@ -6,7 +6,7 @@
         <h4 class="modal-title" id="confirm-title">Confirm deletion</h4>
       </div>
       <div class="modal-body" id="confirm-body">    
-        <form action="">
+        <form action="" method="POST">
           {{ csrf_field() }}
         </form>
         <p></p>

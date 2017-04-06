@@ -7,6 +7,12 @@ use App\TodoList;
 
 class TodoListsController extends Controller
 {
+
+
+    public function __construct(){
+    
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,8 +48,7 @@ class TodoListsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title' => 'required|min:5',
-            'description' => 'min:5'
+            'title' => 'required'
         ]);
 
         //TO-UNDERSTAND: Relations between $request and user()

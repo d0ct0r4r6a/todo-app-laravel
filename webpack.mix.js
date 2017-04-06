@@ -11,6 +11,14 @@ const { mix } = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
+// mix.webpackConfig({
+//   devServer:{
+//     headers: {
+//       'Access-Control-Allow-Origin':'*'
+//     }
+//   }
+// });
+
+mix.js(['resources/assets/js/app.js','resources/assets/js/test.js'], 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
-mix.browserSync('localhost/todo-app/public');
+mix.browserSync('localhost/todo-app/public'); // THIS WILL CAUSE PROBLEMS WITH AJAX-BASED SITES
