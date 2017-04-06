@@ -1,6 +1,10 @@
-<tr id ='task-{{ $task->id }}'> {{-- id for jQuery to delete this item --}}
-  <td><input type="checkbox" class="check-item"></td>
-  <td class="task-item">
+<tr class="task-item" id ='task-{{ $task->id }}'> {{-- id for jQuery to delete this item --}}
+
+  <td>
+    <input type="checkbox" class="check-item" {{ is_null($task->completed_at) ?: 'checked'}}>
+  </td>
+
+  <td class="task-item-title {{ is_null($task->completed_at) ?: 'done' }}">
     {{ $task->title }}
     <div class="buttons row-buttons">
       <a href="" class="btn btn-xs btn-danger">
@@ -8,4 +12,5 @@
       </a>
     </div>
   </td>
+
 </tr>

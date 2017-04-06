@@ -7,7 +7,7 @@
   <p class="list-group-item-text">{{ $todoList->description }}</p>
   <div class="buttons">
 
-    <a href="{{ route('todolists.show', $todoList->id) }}" class="btn btn-info btn-xs show-task-modal" title="Manage Tasks">
+    <a href="{{ route('todolists.show', $todoList->id) }}" class="btn btn-info btn-xs show-task-modal" data-title="{{ $todoList->title }}" title="Manage Tasks">
       <i class="glyphicon glyphicon-ok"></i>
     </a>
 

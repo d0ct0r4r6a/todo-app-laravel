@@ -21,7 +21,7 @@ class CreateTasksTable extends Migration
                 ->references('id')
                 ->on('todo_lists')
                 ->onDelete('cascade');
-            $table->timestamp("completed_at")->nulllable();
+            $table->timestamp("completed_at")->nullable();
             $table->timestamps();
         });
     }

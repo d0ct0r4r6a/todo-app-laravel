@@ -98,7 +98,7 @@ input.task-input:active {
 }
 
 /* Task Item */
-.task-item {
+.task-item-title {
   position: relative;
 }
 
