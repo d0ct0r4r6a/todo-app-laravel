@@ -12,8 +12,16 @@
         <div class="panel panel-default">
           <table class="table">
             <thread>
-              <td width="50" style="vertical-align: middle;"><input type="checkbox" name="check-all" id="check-all"></td>
-              <td><input type="text" placeholder="Enter New Task" class="task-input"></td>
+              <td width="50" style="vertical-align: middle;">
+                <input type="checkbox" name="check-all" id="check-all">
+              </td>
+              <td>
+                <form action="" id="task-form">
+                  {{ csrf_field() }}
+                  <input type="hidden" id="selected-todo-list">
+                  <input type="text" name="title" id="task-title" placeholder="Enter New Task" class="task-input">
+                </form>
+              </td>
             </thread>
             <tbody id="task-table-body">
               {{-- TASK INSERTED VIA AJAX  --}}

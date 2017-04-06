@@ -134,9 +134,13 @@ $('body').on('click', '.show-task-modal', function(event) {
 
   var me = $(this),
     url = me.attr('href'),
-    title = me.data('title');
+    title = me.data('title'),
+    action = me.data('action'),
+    parent = me.closest('.list-group-item');
 
   $("#task-modal-subtitle").text(title);
+  $('#task-form').attr('action',action);
+  $('#selected-todo-list').val(parent.attr('id'));
 
   $.ajax({
     url: url,
@@ -150,6 +154,29 @@ $('body').on('click', '.show-task-modal', function(event) {
 
   $('#task-modal').modal('show');
 
+});
+
+/**
+ * TASK FORM SUBMISSION HANDLER
+ */
+$("#task-form").submit(function(e) {
+  e.preventDefault();
+
+  var form = $(this),
+      url = form.attr('action');
+
+  $.ajax({
+    url: url,
+    type: 'POST',
+    data: form.serialize(),
+    success: function (response) {
+      $('#task-table-body').prepend(response);
+      form.trigger('reset');
+      countActiveTask();
+      initIcheck();
+      countAllTasksofSelectedList();
+    }
+  });
 });
 
 /**
@@ -230,7 +257,12 @@ function countActiveTask() {
   $("#active-tasks-counter").text(total + " " + (total > 1 ? 'tasks' : 'task') + ' left');
 }
 
+function countAllTasksofSelectedList() {
+  var total = $('#task-table-body tr').length,
+    selectedTodoListId = $('#selected-todo-list').val();
 
+  $('#' + selectedTodoListId).find('span.badge').text(total + " " + (total > 1 ? 'tasks' : 'task'));
+}
 
 
 
