@@ -1,11 +1,46 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Another free and simple client-side to-do lists
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## What does it do?
+
+It can do basic stuff a to-do list can do:
+
+- Creating new list
+- Editing list title and description
+- Deleting list
+- Adding task to to-do list
+- Mark a task 'Completed' (and unmark it)
+
+And some additional stuff, which may not be essential but you might want to use it:
+
+- Multiple users authentication system
+- Active/Completed task filters
+
+## How can I install it locally?
+
+Pre-requisites for installation:
+
+- PHP >= 5.6.4
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Mbstring PHP Extension
+- Tokenizer PHP Extension
+- XML PHP Extension
+- Composer (Preferably the latest stable)
+
+Follow these steps:
+
+1. Clone this repository
+2. Go to the local repository directory
+3. Open your machine command line (e.g. bash, Power Shell)
+4. Run `composer install`
+5. Run `php artisan migrate`
+6. (Optional) Run `php artisan db:seed` to provide some dummy data
+
+## How does it do it?
+
+All lists and tasks are populated by AJAX (Asynchronous Javascript XML) calls. So after the initial loading of the to-do app, there is no need for any reload. Tasks and lists will be stored in a database you specified in the app `.env` file. That includes the 'Completed' status of each task. 
+
+If you are asking about particular libraries/modules, [jQuery](http://jquery.com/) mostly do all the DOM manipulations as well as AJAX calls. As for the layout, [Bootstrap 3](http://getbootstrap.com/) takes care of it. And as specified in this repo name, the whole app is made with [Laravel 5.4](https://laravel.com/).
 
 ## About Laravel
 
@@ -20,32 +55,3 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
-
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- **[Codecourse](https://www.codecourse.com)**
-- [Fragrantica](https://www.fragrantica.com)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
