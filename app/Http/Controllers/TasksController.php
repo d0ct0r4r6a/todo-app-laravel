@@ -28,4 +28,11 @@ class TasksController extends Controller
         $affectedRow = $task->update();
         echo $affectedRow;
     }
+
+    public function destroy($todoListId, $id)
+    {
+        $task = Task::findOrFail($id);
+        $task->delete();
+        return $task;
+    }
 }

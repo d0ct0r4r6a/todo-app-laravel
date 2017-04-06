@@ -126,7 +126,7 @@ $('body').on('click', '#confirm-remove-btn', function(e){
 /*================== TASKS ===================== */
 
 /**
- * TASK MODAL BUTTON HANDLER
+ * TASK MODAL SHOW BUTTON HANDLER
  */
 $('body').on('click', '.show-task-modal', function(event) {
   
@@ -175,6 +175,31 @@ $("#task-form").submit(function(e) {
       countActiveTask();
       initIcheck();
       countAllTasksofSelectedList();
+    }
+  });
+});
+
+/**
+ * TASK REMOVE BUTTON HANDLER
+ */
+
+$('#task-table-body').on('click', '.remove-task-btn', function(e) {
+  e.preventDefault();
+
+  var url = $(this).attr('href');
+
+  $.ajax({
+    url: url,
+    type: 'DELETE',
+    data: {
+      _token: $('input[name=_token]').val()
+    },
+    success: function(response) {
+      $('#task-' + response.id).fadeOut(function() {
+        $(this).remove();
+        countActiveTask();
+        countAllTasksofSelectedList();
+      });
     }
   });
 });
