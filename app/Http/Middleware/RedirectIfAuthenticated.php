@@ -18,7 +18,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/todolists');
+            return redirect('/todo-app/public/todolists');
         }
 
         return $next($request);

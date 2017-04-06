@@ -20,12 +20,16 @@ class TodoListsController extends Controller
      */
     public function index(Request $request)
     {
+        // \DB::enableQueryLog(); <- for query debugging
         $todoLists = $request->user()
-                            ->todoLists()
+                            ->todoLists() //if ends here, lazy load
+                            ->with('tasks')
                             ->orderBy('updated_at', 'desc')
                             ->get();
         // $todoLists = TodoList::all();
-        return view('todolists.index', compact('todoLists'), ['count' => $todoLists->count()]);
+        return view('todolists.index', compact('todoLists'), ['count' => $todoLists->count()]); //->render(); for debug, don't return the view 
+
+        // dd(\DB::getQueryLog()); <- for query debugging 
     }
 
     /**
@@ -65,7 +69,12 @@ class TodoListsController extends Controller
      */
     public function show($id)
     {
-        //
+        $todoList = TodoList::findOrFail($id);
+        $tasks = $todoList
+                ->tasks()
+                ->latest()
+                ->get();
+        return view('tasks.index', compact('tasks'));
     }
 
     /**

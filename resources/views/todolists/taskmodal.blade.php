@@ -15,40 +15,8 @@
               <td width="50" style="vertical-align: middle;"><input type="checkbox" name="check-all" id="check-all"></td>
               <td><input type="text" placeholder="Enter New Task" class="task-input"></td>
             </thread>
-            <tbody>
-              <tr>
-                <td><input type="checkbox" class="check-item"></td>
-                <td class="task-item">
-                  The first task
-                  <div class="buttons row-buttons">
-                    <a href="" class="btn btn-xs btn-danger">
-                      <i class="glyphicon glyphicon-remove"></i>
-                    </a>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="check-item"></td>
-                <td class="task-item">
-                  The second task
-                  <div class="buttons row-buttons">
-                    <a href="" class="btn btn-xs btn-danger">
-                      <i class="glyphicon glyphicon-remove"></i>
-                    </a>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="check-item"></td>
-                <td class="task-item">
-                  The third task
-                  <div class="buttons row-buttons">
-                    <a href="" class="btn btn-xs btn-danger">
-                      <i class="glyphicon glyphicon-remove"></i>
-                    </a>
-                  </div>
-                </td>
-              </tr>
+            <tbody id="task-table-body">
+              {{-- TASK INSERTED VIA AJAX  --}}
             </tbody>
           </table>
         </div>
