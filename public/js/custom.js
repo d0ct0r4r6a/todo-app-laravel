@@ -264,7 +264,33 @@ function countAllTasksofSelectedList() {
   $('#' + selectedTodoListId).find('span.badge').text(total + " " + (total > 1 ? 'tasks' : 'task'));
 }
 
+function markTheTask(checkbox) {
+  url = checkbox.data('url'),
+        completed = checkbox.is(':checked');
 
+  $.ajax({
+    url: url,
+    type: 'PUT',
+    data: {
+      completed: completed,
+      _token: $("input[name=_token]").val()
+    },
+    success: function(response) {
+      if (response) {
+        var nextId = checkbox.closest('td').next();
+
+        if (completed) {
+          nextId.addClass('done');
+        }
+        else {
+          nextId.removeClass('done');
+        }
+
+        countActiveTask();
+      }
+    }
+  });
+}
 
 
 
@@ -287,6 +313,16 @@ function initIcheck() {
     $('.check-item').iCheck('uncheck');
   });
 
+  $('.check-item')
+    .on('ifChecked', function(e){
+      var checkbox = $(this);
+      markTheTask(checkbox);
+    })
+    .on('ifUnchecked', function(e){
+      var checkbox = $(this);
+      markTheTask(checkbox);     
+    });
+  
 }
 
 /**
